@@ -135,8 +135,8 @@ cv_results = pd.read_csv("cv_results_xgb.csv")
 cv_results_smote = pd.read_csv("cv_results_xgb_smote.csv")
 cv_accuracy = cv_results["test_accuracy"].values
 cv_f1 = cv_results["test_f1_macro"].values
-cv_accuracy_smote = cv_results["test_f1_macro"].values
-cv_f1_smote = cv_results["test_accuracy"].values
+cv_accuracy_smote = cv_results_smote["test_f1_macro"].values
+cv_f1_smote = cv_results_smote["test_accuracy"].values
 
 # Values from paper
 sample_accuracy_mean = 0.8278
@@ -144,8 +144,8 @@ sample_f1_mean = 0.8228
 
 # Calculating 95% Confidence Intervals for Cross Validation Data
 # No SMOTE
-acc_mean = np.mean(cv_f1)
-acc_se = stats.sem(cv_f1)
+acc_mean = np.mean(cv_accuracy)
+acc_se = stats.sem(cv_accuracy)
 acc_h = acc_se * stats.t.ppf((1 + 0.95) / 2, 9)
 f1_mean = np.mean(cv_f1)
 f1_se = stats.sem(cv_f1)
